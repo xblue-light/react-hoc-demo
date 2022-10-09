@@ -1,13 +1,13 @@
 import React from "react";
 
 function TextInputField({ ...props }) {
+  console.log("TextInputField.props");
+  console.log(props);
   const [inputVal, setStateInputVal] = React.useState("") as any;
   const onChangeInputHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStateInputVal(e.target.value);
   };
-
-  console.log(props);
-  return props?.buttonProps?.action?.type ? (
+  return (
     <>
       <input
         value={inputVal}
@@ -15,26 +15,7 @@ function TextInputField({ ...props }) {
         onChange={onChangeInputHandle}
         style={{ display: "inline-flex" }}
       ></input>
-      <button
-        type="submit"
-        style={{ display: "inline-flex" }}
-        onClick={() =>
-          console.log(`Send API request to ${props?.buttonProps?.action?.url}`)
-        }
-      >
-        {props?.buttonProps?.label}
-      </button>
-    </>
-  ) : (
-    <>
-      <br />
-      <input
-        style={{ display: "inline-flex" }}
-        value={inputVal}
-        placeholder={props?.firstName}
-        onChange={onChangeInputHandle}
-      ></input>
-      <br />
+      <p>{inputVal}</p>
     </>
   );
 }
